@@ -16,6 +16,7 @@ from .alpha_vantage import (
     get_news as get_alpha_vantage_news
 )
 from .alpha_vantage_common import AlphaVantageRateLimitError
+from .intel_news import get_domestic_rss_news
 
 # Configuration and routing logic
 from .config import get_config
@@ -101,10 +102,12 @@ VENDOR_METHODS = {
         "openai": get_stock_news_openai,
         "google": get_google_news,
         "local": [get_finnhub_news, get_reddit_company_news, get_google_news],
+        "RSS": get_domestic_rss_news,
     },
     "get_global_news": {
         "openai": get_global_news_openai,
-        "local": get_reddit_global_news
+        "local": get_reddit_global_news,
+        "RSS": get_domestic_rss_news,
     },
     "get_insider_sentiment": {
         "local": get_finnhub_company_insider_sentiment
